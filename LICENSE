@@ -1,0 +1,3 @@
+These extractors are considered OPEN SOURCE; using export from live GrayLog system using live data. 
+Data Fields have been normalized to work with most installations of either GrayLog or the product which the extractor was intended for.
+The creator of these files is in no way responsible for any changes/modifications or performance impacts on the system they are being implemented on.
