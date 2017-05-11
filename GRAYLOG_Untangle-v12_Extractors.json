@@ -1,0 +1,134 @@
+{
+  "extractors": [
+    {
+      "title": "com.untangle.node.application_control_lite.ApplicationControlLiteEvent",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 5,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "message",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:source} %{DATA:header} <%{DATA:sessionId}> %{LOGLEVEL:level}  %{DATA:tag}\\{\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"protocol\\\":%{DATA:protocol},\\\"blocked\\\":%{DATA:blocked},\\\"sessionId\\\":%{DATA:sessionId},\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"partitionTablePostfix\\\":\\\"%{DATA:partitionTable}\\\""
+      },
+      "condition_type": "string",
+      "condition_value": "com.untangle.node.application_control_lite.ApplicationControlLiteEvent"
+    },
+    {
+      "title": "com.untangle.uvm.node.SessionMinuteEvent",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 3,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "message",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:source} %{DATA:header} <> %{LOGLEVEL:level}  %{DATA:tag}\\{\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"c2sBytes\\\":%{BASE10NUM:bytesIn},\\\"sessionId\\\":%{BASE10NUM:sessionId},\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"s2cBytes\\\":%{BASE10NUM:bytesOut},\\\"partitionTablePostfix\\\":\\\"%{DATA:partitionTable}\\\"}"
+      },
+      "condition_type": "string",
+      "condition_value": "com.untangle.uvm.node.SessionMinuteEvent"
+    },
+    {
+      "title": "com.untangle.node.intrusion_prevention.IntrusionPreventionLogEvent",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 4,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "message",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:source} %{DATA:header} <> %{LOGLEVEL:level}  %{DATA:tag}\\{\\\"msg\\\":\\\"%{DATA:ids_rule}\\\",\\\"ipDestination\\\":\\\"/%{IPV4:dstip}\\\",\\\"classtype\\\":\\\"%{DATA:ids_classtype}\\\",\\\"signatureId\\\":%{BASE10NUM:ids_signatureId},\\\"sportItype\\\":%{BASE10NUM:srcport},\\\"mplsLabel\\\":%{BASE10NUM:mplsLabel},\\\"eventMicrosecond\\\":%{BASE10NUM:eventMicroSecond},\\\"sensorId\\\":%{BASE10NUM:sensorId},\\\"priorityId\\\":%{BASE10NUM:priority},\\\"partitionTablePostfix\\\":\\\"%{DATA:partitionTable}\\\",\\\"generatorId\\\":%{BASE10NUM:ruleId},\\\"protocol\\\":%{BASE10NUM:protocol},\\\"blocked\\\":%{BASE10NUM:blocked},\\\"signatureRevision\\\":%{BASE10NUM:ids_signature},\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"dportIcode\\\":%{BASE10NUM:dstport},\\\"eventId\\\":%{BASE10NUM:eventId},\\\"padding\\\":%{BASE10NUM:padding},\\\"impactFlag\\\":%{BASE10NUM:ids_impactflag},\\\"vlanId\\\":%{BASE10NUM:vlanId},\\\"eventSecond\\\":%{BASE10NUM:ids_eventSecond},\\\"impact\\\":%{BASE10NUM:ids_impact},\\\"ipSource\\\":\\\"/%{IPV4:srcip}\\\",\\\"eventType\\\":%{DATA:ids_eventType},\\\"classificationId\\\":%{BASE10NUM:ids_classificationId},\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"category\\\":\\\"%{DATA:ids_category}\\\""
+      },
+      "condition_type": "string",
+      "condition_value": "com.untangle.node.intrusion_prevention.IntrusionPreventionLogEvent"
+    },
+    {
+      "title": "com.untangle.uvm.node.SessionNatEvent",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 1,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "message",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:source} %{DATA:header} <> %{LOGLEVEL:level}  %{DATA:tag}\\{\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"SClientPort\\\":%{BASE10NUM:srcport},\\\"SServerPort\\\":%{BASE10NUM:dstport},\\\"SClientAddr\\\":\\\"/%{IPV4:srcip}\\\",\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"SServerAddr\\\":\\\"/%{IPV4:dstip}\\\""
+      },
+      "condition_type": "string",
+      "condition_value": "com.untangle.uvm.node.SessionNatEvent"
+    },
+    {
+      "title": "com.untangle.node.firewall.FirewallEvent",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 6,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "message",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:source} %{DATA:header} <%{DATA:sessionId}> %{LOGLEVEL:level}  %{DATA:tag}\\{\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"flagged\\\":%{DATA:flagged},\\\"blocked\\\":%{DATA:blocked},\\\"sessionId\":%{DATA:sessionId},\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"ruleId\\\":%{BASE10NUM:ruleId},\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"partitionTablePostfix\\\":\\\"%{DATA:partitionTable}\\\""
+      },
+      "condition_type": "string",
+      "condition_value": "com.untangle.node.firewall.FirewallEvent"
+    },
+    {
+      "title": "com.untangle.uvm.logging.InterfaceStatEvent",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 8,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "message",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:source} %{DATA:header} <%{DATA:sessionId}> %{LOGLEVEL:level}  %{DATA:tag}\\{\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"txRate\\\":%{DATA:bytesOut},\\\"interfaceId\\\":%{BASE10NUM:src_interface},\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"rxRate\\\":%{DATA:bytesIn},\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"partitionTablePostfix\\\":\\\"%{DATA:partitionTable}\\\"}"
+      },
+      "condition_type": "string",
+      "condition_value": "com.untangle.uvm.logging.InterfaceStatEvent"
+    },
+    {
+      "title": "com.untangle.node.http.HttpRequestEvent",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "message",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:source} %{DATA:header} <%{DATA:sessionId}> %{LOGLEVEL:loglevel}  %{DATA:tag}\\{\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"contentLength\\\":%{BASE10NUM:bytesIn},\\\"requestLine\\\":\\\"%{DATA:URL}\\\",\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"contentType\\\":\\\"%{DATA:contentType}\\\",\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"httpRequestEvent\\\":\\{\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"method\\\":\\\"%{DATA:method}\\\",\\\"requestId\\\":%{DATA:sessionId},\\\"domain\\\":\\\"%{DATA:domain}\\\",\\\"host\\\":\\\"%{HOSTNAME:hostname}\\\",\\\"contentLength\\\":%{BASE10NUM:bytesOut},\\\"requestUri\\\":\\\"%{DATA:requestUri}\\\",\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"sessionEvent\\\":\\{\\\"entitled\\\":%{DATA:entitled},\\\"partitionTablePostfix\\\":\\\"%{DATA:partitionTable},\\\"protocol\\\":%{BASE10NUM:protocol},\\\"hostname\\\":\\\"",
+        "named_captures_only": true
+      },
+      "condition_type": "string",
+      "condition_value": "com.untangle.node.http.HttpRequestEvent"
+    },
+    {
+      "title": "com.untangle.uvm.node.SessionStatsEvent",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 2,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "message",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:source} %{DATA:header} <> %{LOGLEVEL:level}  %{DATA:tag}\\{\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"s2pBytes\\\":%{BASE10NUM:bytesIn},\\\"p2sBytes\":%{BASE10NUM:bytesOut},\\\"endTime\\\":%{BASE10NUM:sessionTime},\\\"sessionId\":%{DATA:sessionId},\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"partitionTablePostfix\\\":\\\"%{DATA:partitionTable}\\\"",
+        "named_captures_only": true
+      },
+      "condition_type": "string",
+      "condition_value": "com.untangle.uvm.node.SessionStatsEvent"
+    },
+    {
+      "title": "com.untangle.uvm.node.SessionEvent",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 7,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "message",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:source} %{DATA:header} <> %{LOGLEVEL:level}  %{DATA:tag}\\{\\\"entitled\\\":%{DATA:entitled},\\\"partitionTablePostfix\\\":\\\"%{DATA:partitionTable}\\\",\\\"protocol\\\":%{BASE10NUM:protocol},\\\"hostname\\\":\\\"%{HOSTNAME:hostname}\\\",\\\"CServerPort\\\":%{BASE10NUM:dstport},\\\"protocolName\\\":%{DATA:protocol},\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"serverLatitude\\\":%{DATA:latitude},\\\"localAddr\\\":\\\"/%{IPV4:srcip}\\\",\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"SServerAddr\\\":\\\"/%{IPV4:dstip}\\\",\\\"remoteAddr\\\":\\\"/%{IPV4:dstip}\\\",\\\"serverIntf\\\":%{BASE10NUM:dst_interface},\\\"CClientAddr\\\":\\\"/%{IPV4:srcip}\\\",\\\"serverCountry\\\":\\\"%{DATA:dst_country}\\\",\\\"sessionId\\\":%{BASE10NUM:sessionId},\\\"SClientAddr\\\":\\\"/%{IPV4:srcip}\",\\\"clientCountry\\\":\\\"%{DATA:src_country}\\\",\\\"CClientPort\\\":%{BASE10NUM:srcport},\\\"policyRuleId\\\":%{BASE10NUM:ruleId},\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"serverLongitude\\\":%{DATA:longitude},\\\"clientIntf\\\":%{BASE10NUM:src_interface},\\\"policyId\\\":%{BASE10NUM:policyId},\\\"SClientPort\\\":%{BASE10NUM:srcport},\\\"bypassed\\\":%{DATA:bypassed},\\\"SServerPort\\\":%{BASE10NUM:dstport},\\\"CServerAddr\\\":\\\"/%{IPV4:srcip}\\\"}",
+        "named_captures_only": true
+      },
+      "condition_type": "string",
+      "condition_value": "com.untangle.uvm.node.SessionEvent"
+    }
+  ],
+  "version": "2.2.0-SNAPSHOT"
+}
