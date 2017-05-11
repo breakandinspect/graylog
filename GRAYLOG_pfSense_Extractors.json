@@ -1,0 +1,19 @@
+{
+  "extractors": [
+    {
+      "title": "pfSense Firewall WebFilter Log",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:process}: %{DATA:ruleId},%{DATA:subruleId},%{DATA:anchor},%{DATA:reason},%{DATA:action},%{BASE10NUM:iptype},%{DATA:tos},%{DATA:ecn},%{BASE10NUM:TTL},%{BASE10NUM:id},%{BASE10NUM:offset},%{DATA:flags},%{BASE10NUM:protocolId},%{DATA:protocol},%{BASE10NUM:length},%{IPV4:srcip},%{IPV4:dstip},%{BASE10NUM:tcp_flags},%{BASE10NUM:sequence},%{BASE10NUM:ack}"
+      },
+      "condition_type": "string",
+      "condition_value": "filterlog:"
+    }
+  ],
+  "version": "2.2.0-SNAPSHOT"
+}
