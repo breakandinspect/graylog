@@ -9,7 +9,7 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: EVT:%{DATA:vmid} %{DATA:timestamp} %{GREEDYDATA:object}"
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: EVT:%{DATA:vmid} %{DATA:logstamp} %{GREEDYDATA:object}"
       },
       "condition_type": "string",
       "condition_value": "LogRhythmDpi:"

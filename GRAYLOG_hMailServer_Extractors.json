@@ -9,7 +9,7 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: \\\"%{DATA:objectname}\\\"\t%{DATA:vmid}\t%{DATA:session}\t\\\"%{DATA:timestamp}\\\"\t\\\"%{IPV4:sip}\\\"\t\\\"%{DATA:command}\\\" \\[%{DATA:object}\\]"
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: \\\"%{DATA:objectname}\\\"\t%{DATA:vmid}\t%{DATA:session}\t\\\"%{DATA:logstamp}\\\"\t\\\"%{IPV4:sip}\\\"\t\\\"%{DATA:command}\\\" \\[%{DATA:object}\\]"
       },
       "condition_type": "string",
       "condition_value": "CHANGE-ME-HMAILSERVER-HOSTNAME"
