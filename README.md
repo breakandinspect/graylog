@@ -6,3 +6,4 @@ these include:
 - pfSense / OPNsense Firewall
 - Ubiquiti Unifi and EdgeRouterX
 - VMware ESXi 6.0+
+- hMailServer
