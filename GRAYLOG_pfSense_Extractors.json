@@ -9,7 +9,7 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "%{DATA:process}: %{DATA:ruleId},%{DATA:subruleId},%{DATA:anchor},%{BASE10NUM:tracker},%{DATA:src_interface},%{DATA:reason},%{DATA:action},%{DATA:direction},%{BASE10NUM:iptype},%{DATA:offset},%{DATA:tos},%{DATA:ecn},%{BASE10NUM:TTL},%{BASE10NUM:id},%{DATA:flags},%{BASE10NUM:protocolId},%{DATA:protocol},%{BASE10NUM:length},%{IPV4:srcip},%{IPV4:dstip},%{BASE10NUM:tcp_flags},%{BASE10NUM:sequence},%{BASE10NUM:ack}"
+        "grok_pattern": "%{DATA:process}: %{DATA:ruleId},%{DATA:subruleId},%{DATA:anchor},%{BASE10NUM:tracker},%{DATA:sinterface},%{DATA:reason},%{DATA:action},%{DATA:direction},%{BASE10NUM:iptype},%{DATA:offset},%{DATA:tos},%{DATA:ecn},%{BASE10NUM:TTL},%{BASE10NUM:id},%{DATA:flags},%{BASE10NUM:protocolId},%{DATA:protocol},%{BASE10NUM:length},%{IPV4:sip},%{IPV4:dip},%{BASE10NUM:tcp_flags},%{BASE10NUM:sequence},%{BASE10NUM:ack}"
       },
       "condition_type": "string",
       "condition_value": "filterlog:"
