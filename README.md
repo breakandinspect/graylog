@@ -4,3 +4,4 @@ these include:
 - Untangle NG Firewall version 12+
 - Symantec (BlueCoat) SSLV version 3.x+
 - pfSense / OPNsense Firewall
+- Ubiquiti Unifi and EdgeRouterX
