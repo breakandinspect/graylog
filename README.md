@@ -5,3 +5,4 @@ these include:
 - Symantec (BlueCoat) SSLV version 3.x+
 - pfSense / OPNsense Firewall
 - Ubiquiti Unifi and EdgeRouterX
+- VMware ESXi 6.0+
