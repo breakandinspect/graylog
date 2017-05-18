@@ -1,7 +1,7 @@
 {
   "extractors": [
     {
-      "title": "Ubiquiti (Unifi) Session Event",
+      "title": "Ubiquiti (EdgeRouterX) DHCP Request",
       "extractor_type": "grok",
       "converters": [],
       "order": 0,
@@ -9,10 +9,38 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "%{HOSTNAME:hostname} %{DATA:account}: %{DATA:process}: %{GREEDYDATA:object}"
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: %{DATA:command} on %{DATA:sinterface} to %{IPV4:dip} port %{BASE10NUM:dport}"
       },
       "condition_type": "string",
-      "condition_value": "LABNET"
+      "condition_value": "CHANGE-ME-UBIQUITI-HOST"
+    },
+    {
+      "title": "Ubiquiti (EdgeRouterX) DHCP Renewal",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: bound to %{IPV4:dip} -- renewal in %{BASE10NUM:rate} seconds."
+      },
+      "condition_type": "string",
+      "condition_value": "CHANGE-ME-UBIQUITI-HOST"
+    },
+    {
+      "title": "Ubiquiti (EdgeRouterX) DHCP Request (2)",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: %{DATA:command} for %{IPV4:sip} from %{DATA:smac} \\(%{DATA:dname}\\) via %{GREEDYDATA:sinterface}"
+      },
+      "condition_type": "string",
+      "condition_value": "CHANGE-ME-UBIQUITI-HOST"
     },
     {
       "title": "Ubiquiti (Unifi) Command Event",
@@ -23,10 +51,10 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "%{HOSTNAME:hostname} %{DATA:process}: %{DATA:account} : TTY=%{DATA:TTY} ; PWD=%{DATA:object} ; USER=%{DATA:login} ; COMMAND=%{GREEDYDATA:command}"
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: %{DATA:account} : TTY=%{DATA:TTY} ; PWD=%{DATA:object} ; USER=%{DATA:login} ; COMMAND=%{GREEDYDATA:command}"
       },
       "condition_type": "string",
-      "condition_value": "LABNET"
+      "condition_value": "CHANGE-ME-UBIQUITI-HOST"
     },
     {
       "title": "Ubiquiti (Unifi) Ace Reporter Event",
@@ -37,10 +65,38 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "\\(\\\"%{HOSTNAME:hostname},%{DATA:sessionId},%{DATA:version}\\\"\\) %{DATA:process}: %{GREEDYDATA:object}"
+        "grok_pattern": "\\(\\\"%{HOSTNAME:sname},%{DATA:sessionId},%{DATA:version}\\\"\\) %{DATA:process}: %{GREEDYDATA:object}"
       },
       "condition_type": "string",
-      "condition_value": "BZ2"
+      "condition_value": "CHANGE-ME-UBIQUITI-HOST"
+    },
+    {
+      "title": "Ubiquiti (Unifi) Session Event",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:account}: %{DATA:process}: %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "CHANGE-ME-UBIQUITI-HOST"
+    },
+    {
+      "title": "Ubiquiti (EdgeRouterX) DHCP Acknowledgement",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: %{DATA:command} from %{IPV4:sip}"
+      },
+      "condition_type": "string",
+      "condition_value": "CHANGE-ME-UBIQUITI-HOST"
     }
   ],
   "version": "2.2.0-SNAPSHOT"
