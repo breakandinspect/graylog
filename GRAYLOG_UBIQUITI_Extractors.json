@@ -112,6 +112,20 @@
       "condition_type": "string",
       "condition_value": "CHANGE-ME-UBIQUITI"
     }
+    {
+      "title": "Ubiquiti (EdgeRouterX) CRON Job",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} CRON\\[%{DATA:session}\\]: %{DATA:process}\\(%{DATA:command}\\): %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "CHANGE-ME-UBIQUITI"
+    }
   ],
   "version": "2.2.0-SNAPSHOT"
 }
