@@ -9,10 +9,10 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "%{HOSTNAME:hostname} %{DATA:user}: %{DATA:process}: %{GREEDYDATA:event}"
+        "grok_pattern": "%{HOSTNAME:hostname} %{DATA:account}: %{DATA:process}: %{GREEDYDATA:object}"
       },
       "condition_type": "string",
-      "condition_value": "CHANGE-ME-TO-UBIQUITI-HOSTNAME"
+      "condition_value": "LABNET"
     },
     {
       "title": "Ubiquiti (Unifi) Command Event",
@@ -23,10 +23,10 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "%{HOSTNAME:hostname} %{DATA:process}: %{DATA:user} : TTY=%{DATA:TTY} ; PWD=%{DATA:path} ; USER=%{DATA:user} ; COMMAND=%{GREEDYDATA:command}"
+        "grok_pattern": "%{HOSTNAME:hostname} %{DATA:process}: %{DATA:account} : TTY=%{DATA:TTY} ; PWD=%{DATA:object} ; USER=%{DATA:login} ; COMMAND=%{GREEDYDATA:command}"
       },
       "condition_type": "string",
-      "condition_value": "CHANGE-ME-TO-UBIQUITI-HOSTNAME"
+      "condition_value": "LABNET"
     },
     {
       "title": "Ubiquiti (Unifi) Ace Reporter Event",
@@ -37,10 +37,10 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "\\(\\\"%{HOSTNAME:hostname},%{DATA:sessionId},%{DATA:version}\\\"\\) %{DATA:process}: %{GREEDYDATA:event}"
+        "grok_pattern": "\\(\\\"%{HOSTNAME:hostname},%{DATA:sessionId},%{DATA:version}\\\"\\) %{DATA:process}: %{GREEDYDATA:object}"
       },
       "condition_type": "string",
-      "condition_value": "CHANGE-ME-TO-UBIQUITI-HOSTNAME"
+      "condition_value": "BZ2"
     }
   ],
   "version": "2.2.0-SNAPSHOT"
