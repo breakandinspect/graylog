@@ -9,7 +9,7 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "%{HOSTNAME:hostname} %{DATA:process}: \\[%{DATA:ssl_segmentId}\\] %{DATA:sessionId} %{IPV4:sip}:%{DATA:sport} -> %{IPV4:dip}:%{DATA:dport} %{DATA:ssl_type} %{DATA:ssl_cypher} %{DATA:URL} %{DATA:ssl_unknown} cert %{DATA:ssl_certificate} rule:%{BASE10NUM:ssl_ruleId} %{DATA:ssl_action} %{DATA:ssl_status}"
+        "grok_pattern": "%{HOSTNAME:hostname} %{DATA:process}: \\[%{DATA:ssl_segmentId}\\] %{DATA:session} %{IPV4:sip}:%{DATA:sport} -> %{IPV4:dip}:%{DATA:dport} %{DATA:ssl_type} %{DATA:ssl_cypher} %{DATA:URL} %{DATA:ssl_unknown} cert %{DATA:ssl_certificate} rule:%{BASE10NUM:ssl_ruleId} %{DATA:ssl_action} %{DATA:ssl_status}"
       },
       "condition_type": "string",
       "condition_value": "ssldata"

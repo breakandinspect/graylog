@@ -9,7 +9,7 @@
       "source_field": "message",
       "target_field": "message",
       "extractor_config": {
-        "grok_pattern": "%{HOSTNAME:sname} %{DATA:header} <%{DATA:session}> %{LOGLEVEL:severity}  %{DATA:tag}\\{\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"protocol\\\":%{DATA:protocol},\\\"blocked\\\":%{DATA:blocked},\\\"sessionId\\\":%{DATA:session},\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"partitionTablePostfix\\\":\\\"%{DATA:partitionTable}\\\""
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:header} <%{DATA:session}> %{DATA:severity}  %{DATA:tag}\\{\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"protocol\\\":%{DATA:protocol},\\\"blocked\\\":%{DATA:blocked},\\\"sessionId\\\":%{DATA:session},\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"partitionTablePostfix\\\":\\\"%{DATA:partitionTable}\\\""
       },
       "condition_type": "string",
       "condition_value": "com.untangle.node.application_control_lite.ApplicationControlLiteEvent"
@@ -23,7 +23,7 @@
       "source_field": "message",
       "target_field": "message",
       "extractor_config": {
-        "grok_pattern": "%{HOSTNAME:sname} %{DATA:header} <> %{LOGLEVEL:severity}  %{DATA:tag}\\{\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"c2sBytes\\\":%{BASE10NUM:bytesIn},\\\"sessionId\\\":%{BASE10NUM:session},\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"s2cBytes\\\":%{BASE10NUM:bytesOut},\\\"partitionTablePostfix\\\":\\\"%{DATA:partitionTable}\\\"}"
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:header} <> %{DATA:severity}  %{DATA:tag}\\{\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"c2sBytes\\\":%{BASE10NUM:bytesIn},\\\"sessionId\\\":%{BASE10NUM:session},\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"s2cBytes\\\":%{BASE10NUM:bytesOut},\\\"partitionTablePostfix\\\":\\\"%{DATA:partitionTable}\\\"}"
       },
       "condition_type": "string",
       "condition_value": "com.untangle.uvm.node.SessionMinuteEvent"
@@ -37,7 +37,7 @@
       "source_field": "message",
       "target_field": "message",
       "extractor_config": {
-        "grok_pattern": "%{HOSTNAME:sname} %{DATA:header} <> %{LOGLEVEL:severity}  %{DATA:tag}\\{\\\"msg\\\":\\\"%{DATA:ids_rule}\\\",\\\"ipDestination\\\":\\\"/%{IPV4:dip}\\\",\\\"classtype\\\":\\\"%{DATA:ids_classtype}\\\",\\\"signatureId\\\":%{BASE10NUM:ids_signatureId},\\\"sportItype\\\":%{BASE10NUM:sport},\\\"mplsLabel\\\":%{BASE10NUM:mplsLabel},\\\"eventMicrosecond\\\":%{BASE10NUM:microsecond},\\\"sensorId\\\":%{BASE10NUM:sensorId},\\\"priorityId\\\":%{BASE10NUM:priority},\\\"partitionTablePostfix\\\":\\\"%{DATA:partitionTable}\\\",\\\"generatorId\\\":%{BASE10NUM:ruleId},\\\"protocol\\\":%{BASE10NUM:protocol},\\\"blocked\\\":%{BASE10NUM:blocked},\\\"signatureRevision\\\":%{BASE10NUM:ids_signature},\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"dportIcode\\\":%{BASE10NUM:dport},\\\"eventId\\\":%{BASE10NUM:eventId},\\\"padding\\\":%{BASE10NUM:padding},\\\"impactFlag\\\":%{BASE10NUM:ids_impactflag},\\\"vlanId\\\":%{BASE10NUM:vlanId},\\\"eventSecond\\\":%{BASE10NUM:seconds},\\\"impact\\\":%{BASE10NUM:ids_impact},\\\"ipSource\\\":\\\"/%{IPV4:sip}\\\",\\\"eventType\\\":%{DATA:ids_eventType},\\\"classificationId\\\":%{BASE10NUM:ids_classificationId},\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"category\\\":\\\"%{DATA:ids_category}\\\""
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:header} <> %{DATA:severity}  %{DATA:tag}\\{\\\"msg\\\":\\\"%{DATA:ids_rule}\\\",\\\"ipDestination\\\":\\\"/%{IPV4:dip}\\\",\\\"classtype\\\":\\\"%{DATA:ids_classtype}\\\",\\\"signatureId\\\":%{BASE10NUM:ids_signatureId},\\\"sportItype\\\":%{BASE10NUM:sport},\\\"mplsLabel\\\":%{BASE10NUM:mplsLabel},\\\"eventMicrosecond\\\":%{BASE10NUM:microsecond},\\\"sensorId\\\":%{BASE10NUM:sensorId},\\\"priorityId\\\":%{BASE10NUM:priority},\\\"partitionTablePostfix\\\":\\\"%{DATA:partitionTable}\\\",\\\"generatorId\\\":%{BASE10NUM:ruleId},\\\"protocol\\\":%{BASE10NUM:protocol},\\\"blocked\\\":%{BASE10NUM:blocked},\\\"signatureRevision\\\":%{BASE10NUM:ids_signature},\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"dportIcode\\\":%{BASE10NUM:dport},\\\"eventId\\\":%{BASE10NUM:eventId},\\\"padding\\\":%{BASE10NUM:padding},\\\"impactFlag\\\":%{BASE10NUM:ids_impactflag},\\\"vlanId\\\":%{BASE10NUM:vlanId},\\\"eventSecond\\\":%{BASE10NUM:seconds},\\\"impact\\\":%{BASE10NUM:ids_impact},\\\"ipSource\\\":\\\"/%{IPV4:sip}\\\",\\\"eventType\\\":%{DATA:ids_eventType},\\\"classificationId\\\":%{BASE10NUM:ids_classificationId},\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"category\\\":\\\"%{DATA:ids_category}\\\""
       },
       "condition_type": "string",
       "condition_value": "com.untangle.node.intrusion_prevention.IntrusionPreventionLogEvent"
@@ -51,7 +51,7 @@
       "source_field": "message",
       "target_field": "message",
       "extractor_config": {
-        "grok_pattern": "%{HOSTNAME:sname} %{DATA:header} <> %{LOGLEVEL:severity}  %{DATA:tag}\\{\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"SClientPort\\\":%{BASE10NUM:sport},\\\"SServerPort\\\":%{BASE10NUM:dport},\\\"SClientAddr\\\":\\\"/%{IPV4:sip}\\\",\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"SServerAddr\\\":\\\"/%{IPV4:dip}\\\""
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:header} <> %{DATA:severity}  %{DATA:tag}\\{\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"SClientPort\\\":%{BASE10NUM:sport},\\\"SServerPort\\\":%{BASE10NUM:dport},\\\"SClientAddr\\\":\\\"/%{IPV4:sip}\\\",\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"SServerAddr\\\":\\\"/%{IPV4:dip}\\\""
       },
       "condition_type": "string",
       "condition_value": "com.untangle.uvm.node.SessionNatEvent"
@@ -65,7 +65,7 @@
       "source_field": "message",
       "target_field": "message",
       "extractor_config": {
-        "grok_pattern": "%{HOSTNAME:sname} %{DATA:header} <%{DATA:session}> %{LOGLEVEL:severity}  %{DATA:tag}\\{\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"flagged\\\":%{DATA:flagged},\\\"blocked\\\":%{DATA:blocked},\\\"sessionId\":%{DATA:session},\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"ruleId\\\":%{BASE10NUM:ruleId},\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"partitionTablePostfix\\\":\\\"%{DATA:partitionTable}\\\""
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:header} <%{DATA:session}> %{DATA:severity}  %{DATA:tag}\\{\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"flagged\\\":%{DATA:flagged},\\\"blocked\\\":%{DATA:blocked},\\\"sessionId\":%{DATA:session},\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"ruleId\\\":%{BASE10NUM:ruleId},\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"partitionTablePostfix\\\":\\\"%{DATA:partitionTable}\\\""
       },
       "condition_type": "string",
       "condition_value": "com.untangle.node.firewall.FirewallEvent"
@@ -79,7 +79,7 @@
       "source_field": "message",
       "target_field": "message",
       "extractor_config": {
-        "grok_pattern": "%{HOSTNAME:sname} %{DATA:header} <%{DATA:session}> %{LOGLEVEL:severity}  %{DATA:tag}\\{\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"txRate\\\":%{DATA:bytesOut},\\\"interfaceId\\\":%{BASE10NUM:sinterface},\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"rxRate\\\":%{DATA:bytesIn},\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"partitionTablePostfix\\\":\\\"%{DATA:partitionTable}\\\"}"
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:header} <%{DATA:session}> %{DATA:severity}  %{DATA:tag}\\{\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"txRate\\\":%{DATA:bytesOut},\\\"interfaceId\\\":%{BASE10NUM:sinterface},\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"rxRate\\\":%{DATA:bytesIn},\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"partitionTablePostfix\\\":\\\"%{DATA:partitionTable}\\\"}"
       },
       "condition_type": "string",
       "condition_value": "com.untangle.uvm.logging.InterfaceStatEvent"
@@ -93,7 +93,7 @@
       "source_field": "message",
       "target_field": "message",
       "extractor_config": {
-        "grok_pattern": "%{HOSTNAME:sname} %{DATA:header} <%{DATA:session}> %{LOGLEVEL:severity}  %{DATA:tag}\\{\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"contentLength\\\":%{BASE10NUM:bytesIn},\\\"requestLine\\\":\\\"%{DATA:URL}\\\",\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"contentType\\\":\\\"%{DATA:contentType}\\\",\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"httpRequestEvent\\\":\\{\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"method\\\":\\\"%{DATA:command}\\\",\\\"requestId\\\":%{DATA:session},\\\"domain\\\":\\\"%{DATA:domain}\\\",\\\"host\\\":\\\"%{HOSTNAME:hostname}\\\",\\\"contentLength\\\":%{BASE10NUM:bytesOut},\\\"requestUri\\\":\\\"%{DATA:requestUri}\\\",\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"sessionEvent\\\":\\{\\\"entitled\\\":%{DATA:entitled},\\\"partitionTablePostfix\\\":\\\"%{DATA:partitionTable},\\\"protocol\\\":%{BASE10NUM:protocol},\\\"hostname\\\":\\\"",
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:header} <%{DATA:session}> %{DATA:severity}  %{DATA:tag}\\{\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"contentLength\\\":%{BASE10NUM:bytesIn},\\\"requestLine\\\":\\\"%{DATA:URL}\\\",\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"contentType\\\":\\\"%{DATA:contentType}\\\",\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"httpRequestEvent\\\":\\{\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"method\\\":\\\"%{DATA:command}\\\",\\\"requestId\\\":%{DATA:session},\\\"domain\\\":\\\"%{DATA:domain}\\\",\\\"host\\\":\\\"%{HOSTNAME:hostname}\\\",\\\"contentLength\\\":%{BASE10NUM:bytesOut},\\\"requestUri\\\":\\\"%{DATA:requestUri}\\\",\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"sessionEvent\\\":\\{\\\"entitled\\\":%{DATA:entitled},\\\"partitionTablePostfix\\\":\\\"%{DATA:partitionTable},\\\"protocol\\\":%{BASE10NUM:protocol},\\\"hostname\\\":\\\"",
         "named_captures_only": true
       },
       "condition_type": "string",
@@ -108,7 +108,7 @@
       "source_field": "message",
       "target_field": "message",
       "extractor_config": {
-        "grok_pattern": "%{HOSTNAME:sname} %{DATA:header} <> %{LOGLEVEL:severity}  %{DATA:tag}\\{\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"s2pBytes\\\":%{BASE10NUM:bytesIn},\\\"p2sBytes\":%{BASE10NUM:bytesOut},\\\"endTime\\\":%{BASE10NUM:sessionTime},\\\"sessionId\":%{DATA:session},\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"partitionTablePostfix\\\":\\\"%{DATA:partitionTable}\\\"",
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:header} <> %{DATA:severity}  %{DATA:tag}\\{\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"s2pBytes\\\":%{BASE10NUM:bytesIn},\\\"p2sBytes\":%{BASE10NUM:bytesOut},\\\"endTime\\\":%{BASE10NUM:sessionTime},\\\"sessionId\":%{DATA:session},\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"partitionTablePostfix\\\":\\\"%{DATA:partitionTable}\\\"",
         "named_captures_only": true
       },
       "condition_type": "string",
@@ -123,7 +123,7 @@
       "source_field": "message",
       "target_field": "message",
       "extractor_config": {
-        "grok_pattern": "%{HOSTNAME:sname} %{DATA:header} <> %{LOGLEVEL:severity}  %{DATA:tag}\\{\\\"entitled\\\":%{DATA:entitled},\\\"partitionTablePostfix\\\":\\\"%{DATA:partitionTable}\\\",\\\"protocol\\\":%{BASE10NUM:protocol},\\\"hostname\\\":\\\"%{HOSTNAME:hostname}\\\",\\\"CServerPort\\\":%{BASE10NUM:dport},\\\"protocolName\\\":%{DATA:protocol},\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"serverLatitude\\\":%{DATA:latitude},\\\"localAddr\\\":\\\"/%{IPV4:sip}\\\",\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"SServerAddr\\\":\\\"/%{IPV4:dip}\\\",\\\"remoteAddr\\\":\\\"/%{IPV4:dip}\\\",\\\"serverIntf\\\":%{BASE10NUM:dinterface},\\\"CClientAddr\\\":\\\"/%{IPV4:sip}\\\",\\\"serverCountry\\\":\\\"%{DATA:dst_country}\\\",\\\"sessionId\\\":%{BASE10NUM:session},\\\"SClientAddr\\\":\\\"/%{IPV4:sip}\",\\\"clientCountry\\\":\\\"%{DATA:src_country}\\\",\\\"CClientPort\\\":%{BASE10NUM:sport},\\\"policyRuleId\\\":%{BASE10NUM:ruleId},\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"serverLongitude\\\":%{DATA:longitude},\\\"clientIntf\\\":%{BASE10NUM:sinterface},\\\"policyId\\\":%{BASE10NUM:policyId},\\\"SClientPort\\\":%{BASE10NUM:sport},\\\"bypassed\\\":%{DATA:bypassed},\\\"SServerPort\\\":%{BASE10NUM:dport},\\\"CServerAddr\\\":\\\"/%{IPV4:sip}\\\"}",
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:header} <> %{DATA:severity}  %{DATA:tag}\\{\\\"entitled\\\":%{DATA:entitled},\\\"partitionTablePostfix\\\":\\\"%{DATA:partitionTable}\\\",\\\"protocol\\\":%{BASE10NUM:protocol},\\\"hostname\\\":\\\"%{HOSTNAME:hostname}\\\",\\\"CServerPort\\\":%{BASE10NUM:dport},\\\"protocolName\\\":%{DATA:protocol},\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"serverLatitude\\\":%{DATA:latitude},\\\"localAddr\\\":\\\"/%{IPV4:sip}\\\",\\\"class\\\":\\\"class %{DATA:class}\\\",\\\"SServerAddr\\\":\\\"/%{IPV4:dip}\\\",\\\"remoteAddr\\\":\\\"/%{IPV4:dip}\\\",\\\"serverIntf\\\":%{BASE10NUM:dinterface},\\\"CClientAddr\\\":\\\"/%{IPV4:sip}\\\",\\\"serverCountry\\\":\\\"%{DATA:dst_country}\\\",\\\"sessionId\\\":%{BASE10NUM:session},\\\"SClientAddr\\\":\\\"/%{IPV4:sip}\",\\\"clientCountry\\\":\\\"%{DATA:src_country}\\\",\\\"CClientPort\\\":%{BASE10NUM:sport},\\\"policyRuleId\\\":%{BASE10NUM:ruleId},\\\"timeStamp\\\":\\\"%{DATA:timestamp}\\\",\\\"serverLongitude\\\":%{DATA:longitude},\\\"clientIntf\\\":%{BASE10NUM:sinterface},\\\"policyId\\\":%{BASE10NUM:policyId},\\\"SClientPort\\\":%{BASE10NUM:sport},\\\"bypassed\\\":%{DATA:bypassed},\\\"SServerPort\\\":%{BASE10NUM:dport},\\\"CServerAddr\\\":\\\"/%{IPV4:sip}\\\"}",
         "named_captures_only": true
       },
       "condition_type": "string",
