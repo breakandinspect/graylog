@@ -1,0 +1,40 @@
+List of Parsing Fields and Tags Used in Extractors
+
+SIP			Source IP (v4/6)
+SNATIP		Source Nat IP (v4/6)
+DIP			Destination IP (v4/6)
+DNATIP		Destination Nat IP (v4/6)
+SPORT		Source Port
+SNATPORT	Source Nat Port
+DPORT		Destination Port
+DNATPORT	Destination Nat Port
+SMAC		Source MAC Address
+DMAC		Destination MAC Address
+SINTERFACE	Source Interface
+DINTERFACE	Destination Interface
+PROTOCOL	Protocol
+PROTNUM		Protocol Number/ID
+PROTNAME	Protocol Name
+LOGIN		User associated with activity
+ACCOUNT		User account impacted by activity
+GROUP		Group/Role
+DOMAIN		Windows/DNS Domain
+OBJECT		Resource (file, etc)
+URL			Referenced URL
+VMID		Vendor Message ID
+SENDER		Email SENDER
+RECIPIENT	Email Recipient
+SUBJECT		Email SUBJECT
+SESSION		User, System, Application Session
+PROCESS		System of Application Process
+SEVERITY	Logging Level
+VERSION		Software/Hardware VERSION
+COMMAND		Command, Script, etc Executed
+BYTESIN		Bytes Inbound
+BYTESOUT	Bytes Outbound
+DURATION	Duration of a Session, Job, Activity, etc
+SIZE		The Size of Something
+QUANTITY	The Quantity of Something
+AMOUNT		The Amount of Something
+RATE		The Rate/Interval of Something
+TIMESTAMP	FreeForm Timestamp Field
