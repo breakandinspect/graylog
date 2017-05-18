@@ -1,0 +1,103 @@
+{
+  "extractors": [
+    {
+      "title": "VMware (smartd) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: %{DATA:command}: %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "smartd:"
+    },
+    {
+      "title": "VMware (hostd) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: %{DATA:severity} hostd\\[%{DATA:session}\\] %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "Hostd:"
+    },
+    {
+      "title": "VMware (crond) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} crond\\[%{DATA:session}\\]: %{DATA:process}: USER %{DATA:login} pid %{BASE10NUM:processId} cmd %{GREEDYDATA:command}"
+      },
+      "condition_type": "string",
+      "condition_value": "crond:"
+    },
+    {
+      "title": "VMware (rhttpproxy) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: %{DATA:severity} rhttpproxy\\[%{DATA:session}\\] %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "Rhttpproxy:"
+    },
+    {
+      "title": "VMware (root) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:login}: %{DATA:command}: %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "root:"
+    },
+    {
+      "title": "VMware (hostd-probe) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: %{DATA:severity} hostd-probe\\[%{DATA:session}\\] %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "hostd-probe:"
+    },
+    {
+      "title": "VMware (syslog) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}\\[%{DATA:session}\\]: %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "syslog["
+    }
+  ],
+  "version": "2.2.0-SNAPSHOT"
+}
