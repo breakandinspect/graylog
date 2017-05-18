@@ -15,20 +15,6 @@
       "condition_value": "dhclient"
     },
     {
-      "title": "SSLV-[ssldata]",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}\\[%{BASE10NUM:processId}\\]: \\[%{DATA:ssl_segmentId}\\] %{DATA:session} %{IPV4:sip}:%{DATA:sport} -> %{IPV4:dip}:%{DATA:dport} %{DATA:ssl_type} %{DATA:ssl_cypher} %{DATA:URL} %{DATA:ssl_unknown} cert %{DATA:ssl_certificate} rule:%{BASE10NUM:ssl_ruleId} %{DATA:command} %{DATA:ssl_status}"
-      },
-      "condition_type": "string",
-      "condition_value": "ssldata"
-    },
-    {
       "title": "SSLV-[sslcontrol]",
       "extractor_type": "grok",
       "converters": [],
@@ -69,6 +55,20 @@
       },
       "condition_type": "string",
       "condition_value": "syslog-ng"
+    },
+    {
+      "title": "SSLV-[ssldata]",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}\\[%{BASE10NUM:processId}\\]: \\[%{DATA:ssl_segmentId}\\] %{DATA:session} %{IPV4:sip}:%{DATA:sport} -> %{IPV4:dip}:%{DATA:dport} %{DATA:ssl_type} %{DATA:ssl_cypher} %{DATA:URL} %{DATA:ssl_unknown} cert fp: %{DATA:ssl_certificate} rule:%{BASE10NUM:ssl_ruleId} %{DATA:command} %{DATA:ssl_status}"
+      },
+      "condition_type": "string",
+      "condition_value": "ssldata"
     }
   ],
   "version": "2.2.0-SNAPSHOT"
