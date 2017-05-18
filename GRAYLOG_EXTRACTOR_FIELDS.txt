@@ -38,3 +38,4 @@ QUANTITY	The Quantity of Something
 AMOUNT		The Amount of Something
 RATE		The Rate/Interval of Something
 LOGSTAMP	FreeForm Timestamp Field found in Message
+DIRECTION Some FWs include directionality of Data (inbound, outbound, etc)
