@@ -37,4 +37,4 @@ SIZE		The Size of Something
 QUANTITY	The Quantity of Something
 AMOUNT		The Amount of Something
 RATE		The Rate/Interval of Something
-TIMESTAMP	FreeForm Timestamp Field
+LOGSTAMP	FreeForm Timestamp Field found in Message
