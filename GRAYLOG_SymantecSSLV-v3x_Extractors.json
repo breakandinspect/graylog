@@ -1,6 +1,20 @@
 {
   "extractors": [
     {
+      "title": "SSLV-[dhclient]",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: %{DATA:command}: %{DATA:object}, interval %{BASE10NUM:rate}ms."
+      },
+      "condition_type": "string",
+      "condition_value": "dhclient"
+    },
+    {
       "title": "SSLV-[ssldata]",
       "extractor_type": "grok",
       "converters": [],
@@ -9,7 +23,7 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: \\[%{DATA:ssl_segmentId}\\] %{DATA:session} %{IPV4:sip}:%{DATA:sport} -> %{IPV4:dip}:%{DATA:dport} %{DATA:ssl_type} %{DATA:ssl_cypher} %{DATA:URL} %{DATA:ssl_unknown} cert %{DATA:ssl_certificate} rule:%{BASE10NUM:ssl_ruleId} %{DATA:ssl_action} %{DATA:ssl_status}"
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}\\[%{BASE10NUM:processId}\\]: \\[%{DATA:ssl_segmentId}\\] %{DATA:session} %{IPV4:sip}:%{DATA:sport} -> %{IPV4:dip}:%{DATA:dport} %{DATA:ssl_type} %{DATA:ssl_cypher} %{DATA:URL} %{DATA:ssl_unknown} cert %{DATA:ssl_certificate} rule:%{BASE10NUM:ssl_ruleId} %{DATA:command} %{DATA:ssl_status}"
       },
       "condition_type": "string",
       "condition_value": "ssldata"
@@ -23,7 +37,7 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: %{DATA:object}"
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: %{GREEDYDATA:object}"
       },
       "condition_type": "string",
       "condition_value": "sslcontrol"
@@ -37,7 +51,7 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: %{DATA:object}"
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: %{GREEDYDATA:object}"
       },
       "condition_type": "string",
       "condition_value": "sslmanage"
@@ -51,24 +65,10 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: %{DATA:object}"
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}\\[%{BASE10NUM:session}\\]: %{GREEDYDATA:object}"
       },
       "condition_type": "string",
       "condition_value": "syslog-ng"
-    },
-    {
-      "title": "SSLV-[dhclient]",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: %{DATA:command}: %{DATA:object}, interval %{BASE10NUM:rate}ms."
-      },
-      "condition_type": "string",
-      "condition_value": "dhclient"
     }
   ],
   "version": "2.2.0-SNAPSHOT"
