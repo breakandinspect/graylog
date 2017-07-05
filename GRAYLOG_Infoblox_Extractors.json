@@ -1,0 +1,201 @@
+{
+  "extractors": [
+    {
+      "title": "Infoblox (kernel) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{IPV4:sip} %{DATA:process}: : \\[%{DATA:session}\\] %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "kernel:"
+    },
+    {
+      "title": "Infoblox (debug_mount) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{IPV4:sip} %{DATA:process}: %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "debug_mount:"
+    },
+    {
+      "title": "Infoblox (named:recursion) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{IPV4:sip} %{DATA:process}\\[%{BASE10NUM:session}\\]: %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "Recursion"
+    },
+    {
+      "title": "Infoblox (named) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{IPV4:sip} %{DATA:process}\\[%{BASE10NUM:session}\\]: client %{IPV4:dip}#%{BASE10NUM:sport} \\(%{DATA:URL}\\): query: %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "named["
+    },
+    {
+      "title": "Infoblox Reporter",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{IPV4:sip} %{DATA:process}: %{GREEDYDATA:logstamp} \\[%{DATA:objectname}\\]: %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "$SPLUNK-REPORTING-ADMIN$"
+    },
+    {
+      "title": "Infoblox (python) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{IPV4:sip} %{DATA:process}: %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "python:"
+    },
+    {
+      "title": "Infoblox (named:zone) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{IPV4:sip} %{DATA:process}\\[%{DATA:session}\\]: zone %{DATA:URL}/IN: %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "zone"
+    },
+    {
+      "title": "Infoblox (named:dhcp_update) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{IPV4:dip} %{DATA:process}\\[%{DATA:session}\\]: client %{IPV4:sip}#%{BASE10NUM:sport}/key %{GREEDYDATA:object} "
+      },
+      "condition_type": "string",
+      "condition_value": "dhcp_updater_default"
+    },
+    {
+      "title": "Infoblox (named:zone_transfer) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{IPV4:dip} %{DATA:process}\\[%{DATA:session}\\]: transfer of \\'%{DATA:URL}/IN\\' from %{IPV4:sip}#%{BASE10NUM:sport}: %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "transfer of"
+    },
+    {
+      "title": "Infoblox (named:zone_reload) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{IPV4:dip} %{DATA:process}\\[%{DATA:session}\\]: \\(re\\)loading policy zone \\'%{DATA:URL}\\' %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "(re)loading"
+    },
+    {
+      "title": "Infoblox (zone:AXFR) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{IPV4:dip} %{DATA:process}\\[%{DATA:session}\\]: client %{IPV4:sip}#%{BASE10NUM:sport} \\(%{DATA:URL}\\): transfer of \\'%{DATA:URL}/IN\\': %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "AXFR"
+    },
+    {
+      "title": "Infoblox (named:zone_notify) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{IPV4:dip} %{DATA:process}\\[%{DATA:session}\\]: client %{IPV4:sip}#%{BASE10NUM:sport}: received notify for zone \\'%{DATA:URL}\\'"
+      },
+      "condition_type": "string",
+      "condition_value": "received notify for zone"
+    },
+    {
+      "title": "Infoblox (Analytics:DNS_Tunneling) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{IPV4:dip} %{DATA:process}: %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "DNS Tunneling"
+    },
+    {
+      "title": "Infoblox (RPZ:QNAME) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{IPV4:dip} %{DATA:process}\\[%{DATA:session}\\]: %{GREEDYDATA:objectname} dst=%{IPV4:dip} src=%{IPV4:sip} spt=%{DATA:sport} view=%{DATA:group} qtype=%{DATA:protname} msg=\\\"%{GREEDYDATA:object}\\\""
+      },
+      "condition_type": "string",
+      "condition_value": "RPZ-QNAME"
+    }
+  ],
+  "version": "2.2.0-SNAPSHOT"
+}
