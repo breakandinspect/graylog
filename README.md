@@ -6,7 +6,7 @@ these include:
 - Symantec (BlueCoat) SSLV version 3.x+
 - pfSense / OPNsense Firewall
 - Ubiquiti Unifi and EdgeRouterX
-- VMware ESX/ESXi and vCenter 6.0+
+- VMware ESX/ESXi and vCenter 5.5+
 - hMailServer
 - LogRhythm Network Monitor (NetMon)
 - Infoblox NIOS 7.xx
