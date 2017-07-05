@@ -1,0 +1,243 @@
+{
+  "extractors": [
+    {
+      "title": "VMware (crond) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} crond\\[%{DATA:session}\\]: %{DATA:process}: USER %{DATA:login} pid %{BASE10NUM:processId} cmd %{GREEDYDATA:command}"
+      },
+      "condition_type": "string",
+      "condition_value": "crond:"
+    },
+    {
+      "title": "VMware (syslog) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}\\[%{DATA:session}\\]: %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "syslog["
+    },
+    {
+      "title": "VMware (root) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:login}: %{DATA:command}: %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "root:"
+    },
+    {
+      "title": "VMware (smartd) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: %{DATA:command}: %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "smartd:"
+    },
+    {
+      "title": "VMware (hostd-probe) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: %{DATA:severity} hostd-probe\\[%{DATA:session}\\] %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "hostd-probe:"
+    },
+    {
+      "title": "VMware (vmkernel) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} vmkernel: %{DATA:process}\\)%{DATA:command}: %{DATA:session}: %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "vmkernel:"
+    },
+    {
+      "title": "VMware (rhttpproxy:Type-1) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: %{DATA:severity} rhttpproxy\\[%{DATA:session}\\] %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "Rhttpproxy:"
+    },
+    {
+      "title": "VMware (hostd:Type-1) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: %{DATA:severity} hostd\\[%{DATA:session}\\] %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "Hostd:"
+    },
+    {
+      "title": "VMware (cimslp) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "cimslp:"
+    },
+    {
+      "title": "VMware (hostd:Type-3) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: --> %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "Hostd:"
+    },
+    {
+      "title": "VMware (hostd-probe:Type-2) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:command}: \\[%{DATA:session} %{DATA:severity} \\'%{DATA:process}\\'\\] %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "hostd-probe:"
+    },
+    {
+      "title": "VMware (hostd:Type-2) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:command}: \\[%{DATA:session} %{DATA:severity} \\'%{DATA:process}\\'] %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "Hostd:"
+    },
+    {
+      "title": "VMware (vpxa:Type-2) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:command}: \\[%{DATA:session} %{DATA:severity} \\'%{DATA:process}\\'] %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "Vpxa:"
+    },
+    {
+      "title": "VMware  (rhttpproxy:Type-2) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:command}: \\[%{DATA:session} %{DATA:severity} \\'%{DATA:process}\\'\\] %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "Rhttpproxy:"
+    },
+    {
+      "title": "VMware (hostd:Type-4) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} Hostd: \\[%{DATA:session} %{DATA:severity} \\'%{DATA:process}\\' opID=%{DATA:command} user=%{DATA:login}\\] %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "Hostd:"
+    },
+    {
+      "title": "VMware (vpxa:Type-3) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:command}: \\[%{DATA:session} %{DATA:severity} \\'%{DATA:process}\\' opID=%{DATA:objectname}\\] %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "Vpxa:"
+    },
+    {
+      "title": "VMware (vpxa:Type-1) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:command}: \\[%{DATA:session} %{DATA:severity} \\'%{DATA:process}\\' opID=%{DATA:objectname}\\] \\[%{DATA:command}\\] %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "Vpxa:"
+    }
+  ],
+  "version": "2.2.0-SNAPSHOT"
+}
