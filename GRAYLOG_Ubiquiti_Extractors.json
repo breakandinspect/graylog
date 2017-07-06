@@ -1,0 +1,285 @@
+{
+  "extractors": [
+    {
+      "title": "Ubiquiti (Unifi) Command Event",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: %{DATA:account} : TTY=%{DATA:duration} ; PWD=%{DATA:object} ; USER=%{DATA:login} ; COMMAND=%{GREEDYDATA:command}"
+      },
+      "condition_type": "string",
+      "condition_value": "CHANGE-ME-UBIQUITI"
+    },
+    {
+      "title": "Ubiquiti (Unifi) Ace Reporter Event",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\(\\\"%{HOSTNAME:sname},%{DATA:objectname},%{DATA:version}\\\"\\) %{DATA:process}: %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "CHANGE-ME-UBIQUITI"
+    },
+    {
+      "title": "Ubiquiti (Unifi) Disconnect Event",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\(\\\"%{HOSTNAME:hostname},%{DATA:objectname},%{DATA:version}\\\"\\) %{DATA:process}\\[%{DATA:session}\\]: %{GREEDYDATA:event}"
+      },
+      "condition_type": "string",
+      "condition_value": "dropbear"
+    },
+    {
+      "title": "Ubiquiti (Unifi) syslog Event",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\(\\\"%{HOSTNAME:sname},%{DATA:objectname},%{DATA:version}\\\"\\) %{DATA:process}: %{DATA:command}: %{DATA:objectname} %{DATA:sinterface}: %{DATA:smac} \\/ %{IPV4:sip}"
+      },
+      "condition_type": "string",
+      "condition_value": "syslog:"
+    },
+    {
+      "title": "Ubiquiti (Unifi) fwlog Event",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\(\\\"%{HOSTNAME:sname},%{DATA:objectname},%{DATA:version}\\\"\\) %{DATA:process}: \\[%{DATA:duration}\\] \\[%{DATA:object}\\] FWLOG: \\[%{DATA:session}\\] %{DATA:object} %{GREEDYDATA:junk}"
+      },
+      "condition_type": "string",
+      "condition_value": "FWLOG:"
+    },
+    {
+      "title": "Ubiquiti (Unifi) kernel Event",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\(\\\"%{HOSTNAME:sname},%{DATA:objectname},%{DATA:version}\\\"\\) %{DATA:process}: \\[%{DATA:duration}\\] %{DATA:sinterface}: %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "kernel:"
+    },
+    {
+      "title": "Ubiquiti (Unifi) init Event",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\(\\\"%{HOSTNAME:sname},%{DATA:objectname},%{DATA:version}\\\"\\) %{DATA:process}: %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "init:"
+    },
+    {
+      "title": "Ubiquiti (Unifi) syswrapper Event",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\(\\\"%{HOSTNAME:sname},%{DATA:objectname},%{DATA:version}\\\"\\) %{DATA:process}: %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "syswrapper:"
+    },
+    {
+      "title": "Ubiquiti (Unifi) hostapd Event",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\(\\\"%{HOSTNAME:sname},%{DATA:objectname},%{DATA:version}\\\"\\) %{DATA:process}: %{DATA:sinterface}: %{DATA:objectname} %{DATA:smac} %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "hostapd:"
+    },
+    {
+      "title": "Ubiquiti (EdgeRouter-X) DHCP-Offer",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: %{DATA:command} on %{IPV4:dip} to %{DATA:dmac} \\(%{HOSTNAME:dname}\\) via %{DATA:sinterface}"
+      },
+      "condition_type": "string",
+      "condition_value": "DHCPOFFER"
+    },
+    {
+      "title": "Ubiquiti (EdgeRouter-X) DHCP-Request",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: %{DATA:command} for %{IPV4:dip} \\(%{IPV4:sip}\\) from %{DATA:dmac} \\(%{HOSTNAME:dname}\\) via %{DATA:sinterface}"
+      },
+      "condition_type": "string",
+      "condition_value": "DHCPREQUEST"
+    },
+    {
+      "title": "Ubiquiti (EdgeRouter-X) DHCP-Acknowledge",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: %{DATA:command} on %{IPV4:dip} to %{DATA:dmac} \\(%{HOSTNAME:dname}\\) via %{DATA:sinterface}"
+      },
+      "condition_type": "string",
+      "condition_value": "DHCPACK"
+    },
+    {
+      "title": "Ubiquiti (EdgeRouter-X) DHCP [WAN] Client(1)",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: bound to %{IPV4:sip} -- %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "dhclient"
+    },
+    {
+      "title": "Ubiquiti (EdgeRouter-X) DHCP [WAN] Client(3)",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: %{DATA:command} from %{IPV4:dip}"
+      },
+      "condition_type": "string",
+      "condition_value": "dhclient"
+    },
+    {
+      "title": "Ubiquiti (EdgeRouter-X) DHCP [WAN] Client(2)",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: %{DATA:command} on %{DATA:sinterface} to %{IPV4:dip} port %{BASE10NUM:dport}"
+      },
+      "condition_type": "string",
+      "condition_value": "dhclient"
+    },
+    {
+      "title": "Ubiquiti (EdgeRouter-X) CRON-Execution",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}\\[%{BASE10NUM:session}]: \\(%{DATA:login}\\) CMD %{GREEDYDATA:command}"
+      },
+      "condition_type": "string",
+      "condition_value": "/USR/BIN/CRON"
+    },
+    {
+      "title": "Ubiquiti (EdgeRouter-X) CRON General Message",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}\\[%{BASE10NUM:session}\\]: %{DATA:objectname}: %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "CRON"
+    },
+    {
+      "title": "Ubiquiti (EdgeRouter-X) DHCP-Discover",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: %{DATA:command} from %{DATA:dmac} \\(%{HOSTNAME:dname}\\) via %{DATA:sinterface}"
+      },
+      "condition_type": "string",
+      "condition_value": "DHCPDISCOVER"
+    },
+    {
+      "title": "Ubiquiti (EdgeRouter-X) DHCP General Message",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:process}: %{GREEDYDATA:payload}"
+      },
+      "condition_type": "string",
+      "condition_value": "dhcpd"
+    },
+    {
+      "title": "Ubiquiti (Unifi) Sudo Session Event",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:account}: %{DATA:process}: %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "pam_unix(sudo:session)"
+    }
+  ],
+  "version": "2.2.0-SNAPSHOT"
+}
