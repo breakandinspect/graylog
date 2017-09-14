@@ -1,0 +1,61 @@
+{
+  "extractors": [
+    {
+      "title": "CISCO ios-X IPACCESSLOGP",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\%SEC-6-%{DATA:process}: %{GREEDYDATA:object} %{DATA:protocol} %{IPV4:sip}\\(%{DATA:sport}\\) -> %{IPV4:dip}\\(%{DATA:dport}\\), %{DATA:size} packet"
+      },
+      "condition_type": "string",
+      "condition_value": "IPACCESSLOGP"
+    },
+    {
+      "title": "CISCO ios-X LINEPROTO",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\%%{DATA:process}-%{DATA:sinterface}-%{DATA:command}: %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "LINEPROTO"
+    },
+    {
+      "title": "CISCO ios-X IPS-x-SIGNATURE",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\%%{DATA:process}: %{GREEDYDATA:object} \\[%{IPV4:sip}:%{DATA:sport} -> %{IPV4:dip}:%{DATA:dport}\\]"
+      },
+      "condition_type": "string",
+      "condition_value": "IPS"
+    },
+    {
+      "title": "CISCO ios-X IPACCESSLOGRL",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\%SEC-6-%{DATA:process}: %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "IPACCESSLOGRL"
+    }
+  ],
+  "version": "2.3.1"
+}
