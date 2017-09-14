@@ -1,4 +1,4 @@
-The following GITHUB repo contains .JSON Extractor files (Log Parsers) for use with GrayLog 2.2.x:
+The following GITHUB repo contains .JSON Extractor files (Log Parsers) for use with GrayLog 2.2.x and above:
 these include:
 
 - Untangle NG Firewall version 12
