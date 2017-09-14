@@ -3,6 +3,7 @@
 #GITHUB: BREAKANDINSPECT
 #Use: ./convert_feeds.sh input_filename output_filename "delimeter"
 #      delimeter can be "," ";" "#" or whatever you need. See Step 1 for details. 
+#      place file in /etc/graylog/feeds along with threat_feeds.sh
 #rm -rf $2 #only used for DEBUG. 
 i=0
 cat $1 | while read line
