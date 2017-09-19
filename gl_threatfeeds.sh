@@ -12,7 +12,7 @@ convert_feed () {
  i=0
  cat $1 | while read line
  do
-  i=$i+1
+  let i++
   echo "$i$3$line" >> $2
  done 
 }
