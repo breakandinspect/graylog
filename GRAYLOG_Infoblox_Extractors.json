@@ -169,20 +169,6 @@
       "condition_value": "received notify for zone"
     },
     {
-      "title": "Infoblox (Analytics:DNS_Tunneling) Process",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{HOSTNAME:sname} %{IPV4:dip} %{DATA:process}: %{GREEDYDATA:object}"
-      },
-      "condition_type": "string",
-      "condition_value": "DNS Tunneling"
-    },
-    {
       "title": "Infoblox (RPZ:QNAME) Process",
       "extractor_type": "grok",
       "converters": [],
@@ -195,7 +181,21 @@
       },
       "condition_type": "string",
       "condition_value": "RPZ-QNAME"
+    },
+    {
+      "title": "Infoblox (Analytics:DNS_Tunneling) Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:sname} %{IPV4:dip} %{DATA:process}: DNS Tunneling detected: Domain name %{DATA:URL} has been detected with tunneling activity. The analytics classification was triggered by %{BASE10NUM:rate} queries from client IP: %{IPV4:sip} to domain %{DATA:domain}. %{GREEDYDATA:object}"
+      },
+      "condition_type": "string",
+      "condition_value": "DNS Tunneling"
     }
   ],
-  "version": "2.2.0-SNAPSHOT"
+  "version": "2.3.1"
 }
