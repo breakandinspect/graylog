@@ -9,5 +9,5 @@ these include:
 - VMware ESX/ESXi and vCenter 5.5+
 - hMailServer
 - LogRhythm Network Monitor (NetMon)
-- Infoblox NIOS 7.xx
+- Infoblox NIOS 7.xx-8.xx
 - CISCO 3725
