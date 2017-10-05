@@ -1,20 +1,6 @@
 {
   "extractors": [
     {
-      "title": "com.untangle.app.application_control_lite.ApplicationControlLiteEvent",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{DATA:severity} %{DATA:junk} \\{\\\"timeStamp\\\":\\\"%{DATA:logstamp}\\\",\\\"protocol\\\":\\\"%{DATA:protname}\\\",\\\"blocked\\\":%{DATA:junk},\\\"sessionId\\\":%{DATA:session},\\\"tag\\\":\\\"%{DATA:junk}\\\",\\\"class\\\":\\\"%{DATA:object}\\\",\\\"partitionTablePostfix\\\":\\\"%{DATA:junk}\\\"\\}"
-      },
-      "condition_type": "string",
-      "condition_value": "com.untangle.app.application_control_lite.ApplicationControlLiteEvent"
-    },
-    {
       "title": "com.untangle.app.firewall.FirewallEvent",
       "extractor_type": "grok",
       "converters": [],
@@ -27,34 +13,6 @@
       },
       "condition_type": "string",
       "condition_value": "class com.untangle.app.firewall.FirewallEvent"
-    },
-    {
-      "title": "com.untangle.uvm.logging.InterfaceStatEvent",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 8,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "message",
-      "extractor_config": {
-        "grok_pattern": "%{HOSTNAME:sname} %{DATA:header} <%{DATA:session}> %{DATA:severity}  %{DATA:tag}\\{\\\"timeStamp\\\":\\\"%{DATA:logstamp}\\\",\\\"txRate\\\":%{DATA:bytesOut},\\\"interfaceId\\\":%{BASE10NUM:sinterface},\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"rxRate\\\":%{DATA:bytesIn},\\\"class\\\":\\\"class %{DATA:object}\\\",\\\"partitionTablePostfix\\\":\\\"%{DATA:partitionTable}\\\"}"
-      },
-      "condition_type": "string",
-      "condition_value": "com.untangle.uvm.logging.InterfaceStatEvent"
-    },
-    {
-      "title": "com.untangle.uvm.app.SessionMinuteEvent",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{DATA:severity} %{DATA:junk} \\{\\\"timeStamp\\\":\\\"%{DATA:logstamp}\\\",\\\"c2sBytes\\\":%{BASE10NUM:bytesIn},\\\"sessionId\\\":%{DATA:session},\\\"tag\\\":\\\"%{DATA:junk}\\\",\\\"class\\\":\\\"%{DATA:object}\\\",\\\"s2cBytes\\\":%{BASE10NUM:bytesOut},\\\"partitionTablePostfix\\\":\\\"%{DATA:junk}\"\\}"
-      },
-      "condition_type": "string",
-      "condition_value": "com.untangle.uvm.app.SessionMinuteEvent"
     },
     {
       "title": "com.untangle.uvm.HostTableEvent",
@@ -85,21 +43,21 @@
       "condition_value": "com.untangle.uvm.logging.InterfaceStatEvent"
     },
     {
-      "title": "com.untangle.uvm.logging.SystemStatEvent",
+      "title": "com.untangle.uvm.logging.InterfaceStatEvent",
       "extractor_type": "grok",
       "converters": [],
-      "order": 0,
+      "order": 8,
       "cursor_strategy": "copy",
       "source_field": "message",
-      "target_field": "",
+      "target_field": "message",
       "extractor_config": {
-        "grok_pattern": "%{DATA:severity} %{DATA:junk} \\{%{GREEDYDATA:junk},\\\"class\\\":\\\"%{DATA:object}\\\",%{GREEDYDATA:junk},\\\"timeStamp\\\":\\\"%{DATA:logstamp}\\\",%{GREEDYDATA:junk}\\}"
+        "grok_pattern": "%{HOSTNAME:sname} %{DATA:header} <%{DATA:session}> %{DATA:severity}  %{DATA:tag}\\{\\\"timeStamp\\\":\\\"%{DATA:logstamp}\\\",\\\"txRate\\\":%{DATA:bytesOut},\\\"interfaceId\\\":%{BASE10NUM:sinterface},\\\"tag\\\":\\\"%{DATA:tag}\\\",\\\"rxRate\\\":%{DATA:bytesIn},\\\"class\\\":\\\"class %{DATA:object}\\\",\\\"partitionTablePostfix\\\":\\\"%{DATA:partitionTable}\\\"}"
       },
       "condition_type": "string",
-      "condition_value": "com.untangle.uvm.logging.SystemStatEvent"
+      "condition_value": "com.untangle.uvm.logging.InterfaceStatEvent"
     },
     {
-      "title": "com.untangle.uvm.app.SessionEvent",
+      "title": "com.untangle.app.application_control_lite.ApplicationControlLiteEvent",
       "extractor_type": "grok",
       "converters": [],
       "order": 0,
@@ -107,13 +65,13 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "%{DATA:severity} %{DATA:junk}  \\{\\\"entitled\\\":%{DATA:junk},\\\"partitionTablePostfix\\\":\\\"%{DATA:junk}\\\",\\\"hostname\\\":\\\"%{HOSTNAME:sname}\\\",\\\"CServerPort\\\":%{BASE10NUM:sport},\\\"protocol\\\":%{DATA:protnum},\\\"protocolName\\\":\\\"%{DATA:protname}\\\",\\\"tag\\\":\\\"%{DATA:junk}\\\",\\\"serverLatitude\\\":%{DATA:latitude},\\\"localAddr\\\":\\\"\\/%{IPV4:sip}\\\",\\\"class\\\":\\\"%{DATA:object}\\\",\\\"SServerAddr\\\":\\\"\\/%{IPV4:dip}\\\",\\\"remoteAddr\\\":\\\"\\/%{IPV4:dip}\\\",\\\"serverIntf\\\":%{DATA:sinterface},\\\"CClientAddr\\\":\\\"\\/%{IPV4:sip}\\\",\\\"serverCountry\\\":\\\"%{DATA:slocation}\\\",\\\"SClientAddr\\\":\\\"/%{IPV4:snatip}\\\",\\\"sessionId\\\":%{DATA:session},\\\"CClientPort\\\":%{BASE10NUM:dport},\\\"policyRuleId\\\":%{DATA:policyrule},\\\"clientCountry\\\":\\\"%{DATA:dlocation}\\\",\\\"timeStamp\\\":\\\"%{DATA:logstamp}\\\",\\\"serverLongitude\\\":%{DATA:longitude},\\\"clientIntf\\\":%{BASE10NUM:dinterface},\\\"SClientPort\\\":%{BASE10NUM:dport},\\\"policyId\\\":%{BASE10NUM:policy},\\\"SServerPort\\\":%{BASE10NUM:sport},\\\"bypassed\\\":%{DATA:junk},\\\"CServerAddr\\\":\\\"\\/%{IPV4:dip}\\\",\\\"tagsString\\\":\\\"%{DATA:junk}\\\"\\}"
+        "grok_pattern": "%{DATA:severity} %{DATA:junk} \\{\\\"timeStamp\\\":\\\"%{DATA:logstamp}\\\",\\\"protocol\\\":\\\"%{DATA:protname}\\\",\\\"blocked\\\":%{DATA:junk},\\\"sessionId\\\":%{DATA:session},\\\"tag\\\":\\\"%{DATA:junk}\\\",\\\"class\\\":\\\"%{DATA:object}\\\",\\\"partitionTablePostfix\\\":\\\"%{DATA:junk}\\\"\\}"
       },
       "condition_type": "string",
-      "condition_value": "com.untangle.uvm.app.SessionEvent"
+      "condition_value": "com.untangle.app.application_control_lite.ApplicationControlLiteEvent"
     },
     {
-      "title": "com.untangle.uvm.DeviceTableEntry",
+      "title": "com.untangle.uvm.app.SessionMinuteEvent",
       "extractor_type": "grok",
       "converters": [],
       "order": 0,
@@ -121,24 +79,10 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "%{DATA:severity} %{DATA:junk} \\{\\\"timeStamp\\\":\\\"%{DATA:logstamp}\\\",\\\"macAddress\\\":\\\"%{DATA:smac}\\\",\\\"oldValue\\\":\\\"%{DATA:junk}\\\",\\\"tag\\\":\\\"%{DATA:junk}\\\",\\\"device\\\":\\{\\\"macAddress\\\":\\\"%{DATA:smac}\\\",\\\"macVendor\\\":\\\"%{DATA:junk}\\\",\\\"hostnameLastKnown\\\":\\\"%{HOSTNAME:sname}\\\",\\\"lastSessionTime\\\":%{DATA:session},\\\"interfaceId\\\":%{BASE10NUM:sinterface},\\\"httpUserAgent\\\":\\\"%{DATA:version}\\\",\\\"class\\\":\\\"%{DATA:object}\\\",\\\"tags\\\":%{DATA:junk},\\\"tagsString\\\":\\\"%{DATA:junk}\\\"\\},\\\"value\\\":\\\"%{DATA:version}\\\",\\\"class\\\":\\\"%{DATA:object}\\\",\\\"key\\\":\\\"%{DATA:objectname}\\\",\\\"partitionTablePostfix\\\":\\\"%{DATA:junk}\\\"\\}"
+        "grok_pattern": "%{DATA:severity} %{DATA:junk} \\{\\\"timeStamp\\\":\\\"%{DATA:logstamp}\\\",\\\"c2sBytes\\\":%{BASE10NUM:bytesIn},\\\"sessionId\\\":%{DATA:session},\\\"tag\\\":\\\"%{DATA:junk}\\\",\\\"class\\\":\\\"%{DATA:object}\\\",\\\"s2cBytes\\\":%{BASE10NUM:bytesOut},\\\"partitionTablePostfix\\\":\\\"%{DATA:junk}\"\\}"
       },
       "condition_type": "string",
-      "condition_value": "com.untangle.uvm.DeviceTableEntry"
-    },
-    {
-      "title": "com.untangle.uvm.app.SessionEvent(2)",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{DATA:severity} %{DATA:junk} \\{\\\"entitled\\\":%{DATA:junk},\\\"CClientAddr\\\":\\\"\\/%{IPV4:sip}\\\",\\\"SClientAddr\\\":\\\"\\/%{IPV4:sip}\\\",\\\"sessionId\\\":%{DATA:session},\\\"CClientPort\\\":%{BASE10NUM:dport},\\\"partitionTablePostfix\\\":\\\"%{DATA:junk}\\\",\\\"timeStamp\\\":\\\"%{DATA:logstamp}\\\",\\\"hostname\\\":\\\"%{HOSTNAME:sname}\\\",\\\"CServerPort\\\":%{BASE10NUM:sport},\\\"clientIntf\\\":%{DATA:dinterface},\\\"protocol\\\":%{BASE10NUM:protnum},\\\"SClientPort\\\":%{BASE10NUM:dport},\\\"policyId\\\":%{DATA:policy},\\\"protocolName\\\":\\\"%{DATA:protname}\\\",\\\"SServerPort\\\":%{BASE10NUM:sport},\\\"bypassed\\\":%{DATA:junk},\\\"CServerAddr\\\":\\\"/%{IPV4:dip}\\\",\\\"tag\\\":\\\"%{DATA:junk}\\\",\\\"localAddr\\\":\\\"\\/%{IPV4:snatip}\\\",\\\"class\\\":\\\"%{DATA:object}\\\",\\\"SServerAddr\\\":\\\"\\/%{IPV4:dip}\\\",\\\"remoteAddr\\\":\\\"\\/%{IPV4:dip}\\\",\\\"serverIntf\\\":%{DATA:sinterface}\\}"
-      },
-      "condition_type": "string",
-      "condition_value": "com.untangle.uvm.app.SessionEvent"
+      "condition_value": "com.untangle.uvm.app.SessionMinuteEvent"
     },
     {
       "title": "com.untangle.uvm.app.SessionStatsEvent(3)",
@@ -155,6 +99,34 @@
       "condition_value": "class com.untangle.uvm.app.SessionStatsEvent"
     },
     {
+      "title": "com.untangle.uvm.app.SessionEvent",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:severity} %{DATA:junk}  \\{\\\"entitled\\\":%{DATA:junk},\\\"partitionTablePostfix\\\":\\\"%{DATA:junk}\\\",\\\"hostname\\\":\\\"%{HOSTNAME:sname}\\\",\\\"CServerPort\\\":%{BASE10NUM:sport},\\\"protocol\\\":%{DATA:protnum},\\\"protocolName\\\":\\\"%{DATA:protname}\\\",\\\"tag\\\":\\\"%{DATA:junk}\\\",\\\"serverLatitude\\\":%{DATA:latitude},\\\"localAddr\\\":\\\"\\/%{IPV4:sip}\\\",\\\"class\\\":\\\"%{DATA:object}\\\",\\\"SServerAddr\\\":\\\"\\/%{IPV4:dip}\\\",\\\"remoteAddr\\\":\\\"\\/%{IPV4:dip}\\\",\\\"serverIntf\\\":%{DATA:sinterface},\\\"CClientAddr\\\":\\\"\\/%{IPV4:sip}\\\",\\\"serverCountry\\\":\\\"%{DATA:slocation}\\\",\\\"SClientAddr\\\":\\\"/%{IPV4:snatip}\\\",\\\"sessionId\\\":%{DATA:session},\\\"CClientPort\\\":%{BASE10NUM:dport},\\\"policyRuleId\\\":%{DATA:policyrule},\\\"clientCountry\\\":\\\"%{DATA:dlocation}\\\",\\\"timeStamp\\\":\\\"%{DATA:logstamp}\\\",\\\"serverLongitude\\\":%{DATA:longitude},\\\"clientIntf\\\":%{BASE10NUM:dinterface},\\\"SClientPort\\\":%{BASE10NUM:dport},\\\"policyId\\\":%{BASE10NUM:policy},\\\"SServerPort\\\":%{BASE10NUM:sport},\\\"bypassed\\\":%{DATA:junk},\\\"CServerAddr\\\":\\\"\\/%{IPV4:dip}\\\",\\\"tagsString\\\":\\\"%{DATA:junk}\\\"\\}"
+      },
+      "condition_type": "string",
+      "condition_value": "com.untangle.uvm.app.SessionEvent"
+    },
+    {
+      "title": "com.untangle.uvm.app.SessionEvent(2)",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:severity} %{DATA:junk} \\{\\\"entitled\\\":%{DATA:junk},\\\"CClientAddr\\\":\\\"\\/%{IPV4:sip}\\\",\\\"SClientAddr\\\":\\\"\\/%{IPV4:sip}\\\",\\\"sessionId\\\":%{DATA:session},\\\"CClientPort\\\":%{BASE10NUM:dport},\\\"partitionTablePostfix\\\":\\\"%{DATA:junk}\\\",\\\"timeStamp\\\":\\\"%{DATA:logstamp}\\\",\\\"hostname\\\":\\\"%{HOSTNAME:sname}\\\",\\\"CServerPort\\\":%{BASE10NUM:sport},\\\"clientIntf\\\":%{DATA:dinterface},\\\"protocol\\\":%{BASE10NUM:protnum},\\\"SClientPort\\\":%{BASE10NUM:dport},\\\"policyId\\\":%{DATA:policy},\\\"protocolName\\\":\\\"%{DATA:protname}\\\",\\\"SServerPort\\\":%{BASE10NUM:sport},\\\"bypassed\\\":%{DATA:junk},\\\"CServerAddr\\\":\\\"/%{IPV4:dip}\\\",\\\"tag\\\":\\\"%{DATA:junk}\\\",\\\"localAddr\\\":\\\"\\/%{IPV4:snatip}\\\",\\\"class\\\":\\\"%{DATA:object}\\\",\\\"SServerAddr\\\":\\\"\\/%{IPV4:dip}\\\",\\\"remoteAddr\\\":\\\"\\/%{IPV4:dip}\\\",\\\"serverIntf\\\":%{DATA:sinterface}\\}"
+      },
+      "condition_type": "string",
+      "condition_value": "com.untangle.uvm.app.SessionEvent"
+    },
+    {
       "title": "com.untangle.uvm.app.SessionStatsEvent",
       "extractor_type": "grok",
       "converters": [],
@@ -169,7 +141,7 @@
       "condition_value": "class com.untangle.uvm.app.SessionStatsEvent"
     },
     {
-      "title": "com.untangle.app.http.HttpResponseEvent (Truncated)",
+      "title": "com.untangle.uvm.logging.SystemStatEvent",
       "extractor_type": "grok",
       "converters": [],
       "order": 0,
@@ -177,10 +149,24 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "%{DATA:severity} %{DATA:junk} \\{\\\"timeStamp\\\":\\\"%{DATA:logstamp}\\\",\\\"contentLength\\\":%{BASE10NUM:size},\\\"requestLine\\\":\\\"%{DATA:command}\",\\\"tag\\\":\\\"%{DATA:junk}\\\",\\\"contentType\\\":\\\"%{DATA:objectname}\\\",\\\"class\\\":\\\"%{DATA:object}\\\",\\\"httpRequestEvent\\\":%{GREEDYDATA:payload}"
+        "grok_pattern": "%{DATA:severity} %{DATA:junk} \\{%{GREEDYDATA:junk},\\\"class\\\":\\\"%{DATA:object}\\\",%{GREEDYDATA:junk},\\\"timeStamp\\\":\\\"%{DATA:logstamp}\\\",%{GREEDYDATA:junk}\\}"
       },
       "condition_type": "string",
-      "condition_value": "class com.untangle.app.http.HttpResponseEvent"
+      "condition_value": "com.untangle.uvm.logging.SystemStatEvent"
+    },
+    {
+      "title": "com.untangle.uvm.DeviceTableEntry",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:severity} %{DATA:junk} \\{\\\"timeStamp\\\":\\\"%{DATA:logstamp}\\\",\\\"macAddress\\\":\\\"%{DATA:smac}\\\",\\\"oldValue\\\":\\\"%{DATA:junk}\\\",\\\"tag\\\":\\\"%{DATA:junk}\\\",\\\"device\\\":\\{\\\"macAddress\\\":\\\"%{DATA:smac}\\\",\\\"macVendor\\\":\\\"%{DATA:junk}\\\",\\\"hostnameLastKnown\\\":\\\"%{HOSTNAME:sname}\\\",\\\"lastSessionTime\\\":%{DATA:session},\\\"interfaceId\\\":%{BASE10NUM:sinterface},\\\"httpUserAgent\\\":\\\"%{DATA:version}\\\",\\\"class\\\":\\\"%{DATA:object}\\\",\\\"tags\\\":%{DATA:junk},\\\"tagsString\\\":\\\"%{DATA:junk}\\\"\\},\\\"value\\\":\\\"%{DATA:version}\\\",\\\"class\\\":\\\"%{DATA:object}\\\",\\\"key\\\":\\\"%{DATA:objectname}\\\",\\\"partitionTablePostfix\\\":\\\"%{DATA:junk}\\\"\\}"
+      },
+      "condition_type": "string",
+      "condition_value": "com.untangle.uvm.DeviceTableEntry"
     },
     {
       "title": "requestUri (Truncated)",
@@ -197,7 +183,7 @@
       "condition_value": "requestUri"
     },
     {
-      "title": "com.untangle.uvm.app.SessionNatEvent",
+      "title": "com.untangle.app.http.HttpRequestEvent(2)",
       "extractor_type": "grok",
       "converters": [],
       "order": 0,
@@ -205,10 +191,10 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "%{DATA:severity} %{DATA:junk} \\{\\\"timeStamp\\\":\\\"%{DATA:logstamp}\\\",\\\"SClientPort\\\":%{BASE10NUM:dnatport},\\\"SServerPort\\\":%{BASE10NUM:dport},\\\"SClientAddr\\\":\\\"\\/%{IPV4:snatip}\\\",\\\"tag\\\":\\\"%{DATA:junk}\\\",\\\"class\\\":\\\"%{DATA:object}\\\",\\\"SServerAddr\\\":\\\"\\/%{IPV4:dip}\\\",\\\"serverIntf\\\":%{BASE10NUM:sinterface},\\\"sessionEvent\\\":\\{\\\"entitled\\\":%{DATA:junk},\\\"partitionTablePostfix\\\":\\\"%{DATA:junk}\\\",\\\"hostname\\\":\\\"%{HOSTNAME:sname}\\\",\\\"CServerPort\\\":%{BASE10NUM:sport},\\\"protocol\\\":%{BASE10NUM:protnum},\\\"protocolName\\\":\\\"%{DATA:protname}\\\",\\\"tag\\\":\\\"%{DATA:junk}\\\",\\\"serverLatitude\\\":%{DATA:latitude},\\\"localAddr\\\":\\\"\\/%{IPV4:sip}\\\",\\\"class\\\":\\\"%{DATA:junk}\\\",\\\"SServerAddr\\\":\\\"\\/%{IPV4:dip}\\\",\\\"remoteAddr\\\":\\\"\\/%{IPV4:dip}\\\",\\\"serverIntf\\\":%{BASE10NUM:sinterface},\\\"CClientAddr\\\":\\\"\\/%{IPV4:sip}\\\",\\\"serverCountry\\\":\\\"%{DATA:slocation}\\\",\\\"SClientAddr\\\":\\\"\\/%{IPV4:snatip}\\\",\\\"sessionId\\\":%{DATA:session},\\\"CClientPort\\\":%{BASE10NUM:snatport},\\\"policyRuleId\\\":%{BASE10NUM:policyrule},\\\"clientCountry\\\":\\\"%{DATA:dlocation}\\\",\\\"timeStamp\\\":\\\"%{DATA:logstamp}\\\",\\\"serverLongitude\\\":%{DATA:longitude},\\\"clientIntf\\\":%{BASE10NUM:dinterface},\\\"SClientPort\\\":%{BASE10NUM:dnatport},\\\"policyId\\\":%{BASE10NUM:policy},\\\"SServerPort\\\":%{BASE10NUM:dport},\\\"bypassed\\\":%{DATA:junk},\\\"CServerAddr\\\":\\\"\\/%{IPV4:dip}\\\",\\\"tagsString\\\":\\\"\\\"\\},\\\"partitionTablePostfix\\\":\\\"%{DATA:junk}\\\"\\}"
+        "grok_pattern": "%{DATA:severity} %{DATA:junk} \\{\\\"timeStamp\\\":\\\"%{DATA:logstamp}\\\",\\\"method\\\":\\\"%{DATA:command}\\\",\\\"requestId\\\":%{DATA:session},\\\"domain\\\":\\\"%{DATA:domain}\\\",\\\"host\\\":\\\"%{DATA:URL}\\\",\\\"contentLength\\\":%{DATA:size},\\\"requestUri\\\":\\\"%{DATA:URI}\\\",\\\"tag\\\":\\\"%{DATA:junk}\\\",\\\"class\\\":\\\"%{DATA:object}\\\",\\\"sessionEvent\\\":\\{\\\"entitled\\\":%{DATA:junk}\\,\\\"partitionTablePostfix\\\":\\\"%{DATA:junk}\\\",\\\"hostname\\\":\\\"%{HOSTNAME:sname}\\\",\\\"CServerPort\\\":%{BASE10NUM:sport},\\\"protocol\\\":%{BASE10NUM:protnum},\\\"protocolName\\\":\\\"%{DATA:protname}\\\",\\\"tag\\\":\\\"%{DATA:junk}\\\",\\\"%{GREEDYDATA:payload}"
       },
       "condition_type": "string",
-      "condition_value": "com.untangle.uvm.app.SessionNatEvent"
+      "condition_value": "com.untangle.app.http.HttpRequestEvent"
     },
     {
       "title": "com.untangle.app.intrusion_prevention.IntrusionPreventionLogEvent",
@@ -225,7 +211,7 @@
       "condition_value": "com.untangle.app.intrusion_prevention.IntrusionPreventionLogEvent"
     },
     {
-      "title": "com.untangle.app.http.HttpRequestEvent(2)",
+      "title": "com.untangle.uvm.app.SessionNatEvent",
       "extractor_type": "grok",
       "converters": [],
       "order": 0,
@@ -233,10 +219,10 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "%{DATA:severity} %{DATA:junk} \\{\\\"timeStamp\\\":\\\"%{DATA:logstamp}\\\",\\\"method\\\":\\\"%{DATA:command}\\\",\\\"requestId\\\":%{DATA:session},\\\"domain\\\":\\\"%{DATA:domain}\\\",\\\"host\\\":\\\"%{DATA:URL}\\\",\\\"contentLength\\\":%{DATA:size},\\\"requestUri\\\":\\\"%{DATA:URI}\\\",\\\"tag\\\":\\\"%{DATA:junk}\\\",\\\"class\\\":\\\"%{DATA:object}\\\",\\\"sessionEvent\\\":\\{\\\"entitled\\\":%{DATA:junk}\\,\\\"partitionTablePostfix\\\":\\\"%{DATA:junk}\\\",\\\"hostname\\\":\\\"%{HOSTNAME:sname}\\\",\\\"CServerPort\\\":%{BASE10NUM:sport},\\\"protocol\\\":%{BASE10NUM:protnum},\\\"protocolName\\\":\\\"%{DATA:protname}\\\",\\\"tag\\\":\\\"%{DATA:junk}\\\",\\\"%{GREEDYDATA:payload}"
+        "grok_pattern": "%{DATA:severity} %{DATA:junk} \\{\\\"timeStamp\\\":\\\"%{DATA:logstamp}\\\",\\\"SClientPort\\\":%{BASE10NUM:dnatport},\\\"SServerPort\\\":%{BASE10NUM:dport},\\\"SClientAddr\\\":\\\"\\/%{IPV4:snatip}\\\",\\\"tag\\\":\\\"%{DATA:junk}\\\",\\\"class\\\":\\\"%{DATA:object}\\\",\\\"SServerAddr\\\":\\\"\\/%{IPV4:dip}\\\",\\\"serverIntf\\\":%{BASE10NUM:sinterface},\\\"sessionEvent\\\":\\{\\\"entitled\\\":%{DATA:junk},\\\"partitionTablePostfix\\\":\\\"%{DATA:junk}\\\",\\\"hostname\\\":\\\"%{HOSTNAME:sname}\\\",\\\"CServerPort\\\":%{BASE10NUM:sport},\\\"protocol\\\":%{BASE10NUM:protnum},\\\"protocolName\\\":\\\"%{DATA:protname}\\\",\\\"tag\\\":\\\"%{DATA:junk}\\\",\\\"serverLatitude\\\":%{DATA:latitude},\\\"localAddr\\\":\\\"\\/%{IPV4:sip}\\\",\\\"class\\\":\\\"%{DATA:junk}\\\",\\\"SServerAddr\\\":\\\"\\/%{IPV4:dip}\\\",\\\"remoteAddr\\\":\\\"\\/%{IPV4:dip}\\\",\\\"serverIntf\\\":%{BASE10NUM:sinterface},\\\"CClientAddr\\\":\\\"\\/%{IPV4:sip}\\\",\\\"serverCountry\\\":\\\"%{DATA:slocation}\\\",\\\"SClientAddr\\\":\\\"\\/%{IPV4:snatip}\\\",\\\"sessionId\\\":%{DATA:session},\\\"CClientPort\\\":%{BASE10NUM:snatport},\\\"policyRuleId\\\":%{BASE10NUM:policyrule},\\\"clientCountry\\\":\\\"%{DATA:dlocation}\\\",\\\"timeStamp\\\":\\\"%{DATA:logstamp}\\\",\\\"serverLongitude\\\":%{DATA:longitude},\\\"clientIntf\\\":%{BASE10NUM:dinterface},\\\"SClientPort\\\":%{BASE10NUM:dnatport},\\\"policyId\\\":%{BASE10NUM:policy},\\\"SServerPort\\\":%{BASE10NUM:dport},\\\"bypassed\\\":%{DATA:junk},\\\"CServerAddr\\\":\\\"\\/%{IPV4:dip}\\\",\\\"tagsString\\\":\\\"\\\"\\},\\\"partitionTablePostfix\\\":\\\"%{DATA:junk}\\\"\\}"
       },
       "condition_type": "string",
-      "condition_value": "com.untangle.app.http.HttpRequestEvent"
+      "condition_value": "com.untangle.uvm.app.SessionNatEvent"
     },
     {
       "title": "com.untangle.app.ad_blocker.cookies.CookieEvent",
@@ -251,7 +237,35 @@
       },
       "condition_type": "string",
       "condition_value": "com.untangle.app.ad_blocker.cookies.CookieEvent"
+    },
+    {
+      "title": "com.untangle.app.http.HttpResponseEvent (Truncated)",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:severity} %{DATA:junk} \\{\\\"timeStamp\\\":\\\"%{DATA:logstamp}\\\",\\\"contentLength\\\":%{BASE10NUM:size},\\\"requestLine\\\":\\\"%{DATA:command}\",\\\"tag\\\":\\\"%{DATA:junk}\\\",\\\"contentType\\\":\\\"%{DATA:objectname}\\\",\\\"class\\\":\\\"%{DATA:object}\\\",\\\"httpRequestEvent\\\":%{GREEDYDATA:payload}"
+      },
+      "condition_type": "string",
+      "condition_value": "class com.untangle.app.http.HttpResponseEvent"
+    },
+    {
+      "title": "com.untangle.app.openvpn.OpenVpnStatusEvent",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:severity}  %{DATA:junk}:  \\{\\\"address\\\":\\\"\\/%{IPV4:sip}\\\",\\\"clientName\\\":\\\"%{DATA:account}\\\",\\\"start\\\":\\\"%{DATA:timestart}\\\",\\\"bytesTxDelta\\\":%{BASE10NUM:bytesout},\\\"partitionTablePostfix\\\":\\\"%{DATA:junk}\\\",\\\"timeStamp\\\":\"%{DATA:logstamp}\",\\\"bytesRxTotal\\\":%{BASE10NUM:bytesin},\"port\":%{BASE10NUM:sport},\\\"bytesTxTotal\\\":%{BASE10NUM:size},\\\"poolAddress\\\":\\\"\\/%{IPV4:dip}\\\",\\\"end\\\":\\\"%{DATA:timestop}\",\\\"tag\\\":\\\"%{DATA:junk} \\\",\\\"bytesRxDelta\\\":%{BASE10NUM:rate},\\\"class\\\":\\\"class %{DATA:object}\\\"\\}"
+      },
+      "condition_type": "string",
+      "condition_value": "com.untangle.app.openvpn.OpenVpnStatusEvent"
     }
   ],
-  "version": "2.2.0-SNAPSHOT"
+  "version": "2.3.1"
 }
